@@ -16,7 +16,8 @@ const firstPromise = new Promise((resolve, reject) => {
   const timer = setTimeout(() => {
     document.removeEventListener('click', handleClick);
 
-    reject(new Error('First promise was rejected'));
+    // eslint-disable-next-line prefer-promise-reject-errors
+    reject('First promise was rejected');
   }, 3000);
 });
 
@@ -70,7 +71,7 @@ function showMessage(message, type) {
 
 firstPromise
   .then((message) => showMessage(message, 'success'))
-  .catch((error) => showMessage(error.message, 'error'));
+  .catch((message) => showMessage(message, 'error'));
 
 secondPromise
   .then((message) => showMessage(message, 'success'))
