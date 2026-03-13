@@ -70,7 +70,7 @@ function showMessage(message, type) {
 
 firstPromise
   .then((message) => showMessage(message, 'success'))
-  .catch((message) => showMessage(message, 'error'));
+  .catch((error) => showMessage(error.message, 'error'));
 
 secondPromise
   .then((message) => showMessage(message, 'success'))
